@@ -12,9 +12,9 @@ Docker compose:       "https://docs.docker.com/desktop/install/linux-install/"
 
 ## Sources:
 
-NCBI:                 "https://www.ncbi.nlm.nih.gov/"    DB americano
+NCBI:                 "https://www.ncbi.nlm.nih.gov/"
 
-EBI:                  "https://www.ebi.ac.uk/"           DB europeo
+EBI:                  "https://www.ebi.ac.uk/"
 
 ## Project structure:
 The project consists of the following four modules:
@@ -26,7 +26,15 @@ The project consists of the following four modules:
 
 ## First use guide
 
+TODO:
+- goals
+- issues resolved
+- development choices
+
 TODO
+- install mongotools
+- install docker engine
+- run docker-compose after download Frontend and Backend in the same directory (bash?)
 
 ## Collections
 Base collections:
