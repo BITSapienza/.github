@@ -16,68 +16,33 @@
 Credits
 [`federico-rosatelli`](https://github.com/federico-rosatelli) [`Mat`](https://github.com/AxnNxs) [`Loriv3`](https://github.com/Loriv3) [`Samsey`](https://github.com/Samseys) [`Calli`](https://github.com/BboyCaligola)
 
-
-# Requisiti Hardware:
-Questo progetto ospiterà una grande quantità di dati, dovuta principalmente a n sequenze FASTA 
-e/o FASTQ di una vasta varietà di organismi. Pertanto si consiglia di disporre di:
-
-1. PC ad-hoc connesso costantemente a internet, dove verrà trasferito il DB e il Server virtuale
-2. Archiviazione da 1+ TB per ospitare tutti i dati
-
-
-
-# Requisiti Software:
+# Requisiti:
 
 Anaconda:             "https://www.anaconda.com"
 
 Biopython:            "https://biopython.org/wiki/Documentation"
 
-Hashlib:              "https://docs.python.org/3/library/hashlib.html"
-
-Argparse:             "https://docs.python.org/3/library/argparse.html"
-
 Pymongo:              "https://pymongo.readthedocs.io/en/stable/"
-
-Matplotlib:           "https://matplotlib.org/"
 
 MongoDB CE "Jammy":   "https://www.mongodb.com/docs/manual/tutorial/install-mongodb-on-ubuntu/"
 
-NVM:                  "https://www.linode.com/docs/guides/how-to-install-use-node-version-manager-nvm/"
-
-Nodejs:               "https://github.com/nodejs/help/wiki/Installation"
-
 NPM:                  "https://docs.npmjs.com/downloading-and-installing-node-js-and-npm"
-
-Nodejs Express:       "http://expressjs.com/"
 
 GoLang:               "https://go.dev/doc/install"
 
-VUEjs:                "https://cli.vuejs.org/guide/installation.html"
+Vue.js:                "https://cli.vuejs.org/guide/installation.html"
 
 Docker:               "https://docs.docker.com/engine/install/ubuntu/"
 
 Docker compose:       "https://docs.docker.com/desktop/install/linux-install/" (Integrato in Desktop)
 
 
-
 # Fonti ufficiali:
 
-Shigen:               "https://shigen.nig.ac.jp"         DB giapponese
 
 NCBI:                 "https://www.ncbi.nlm.nih.gov/"    DB americano
 
 EBI:                  "https://www.ebi.ac.uk/"           DB europeo
-
-
-
-
-# Altri link e Repository:
-
-Drive:                "https://drive.google.com/drive/folders/19RXRHEb-7-O9gaUjXz5ho-Q2_HsbKlEW"
-
-Github:               "https://github.com/federico-rosatelli/biologia"
-
-
 
 # Struttura del Progetto:
 L'insieme di questi 4 moduli hanno dato vita al progetto qui in opera:
@@ -85,15 +50,7 @@ L'insieme di questi 4 moduli hanno dato vita al progetto qui in opera:
 - Database: MongoDB
 - Parser:   Bioparse.py
 - Backend:  GoServer
-- Frontend: VueJS
-- data:		Files
-
-
-
-# Schema del progetto
-![Algae Project Struct](algaeStruct.png "Struct of the Project")
-
-
+- Frontend: Vue.js
 
 # Guida al primo utilizzo
 Per la prima installazione su un qualsiasi PC, seguire i seguenti passaggi:
@@ -135,11 +92,6 @@ download da parte delle piattaforme dei Riferimenti Ufficiali. Tali metodi sono 
     ``run npm dev``                                             Per avviare il frontend
 
 
-
-
-
-
-
 - Ora é possibile consultare il DB da terminale. Si riportano alcuni comandi utili allo scopo:
     
     ``mongosh``                                                 Per utilizzare MongoDB
@@ -170,114 +122,24 @@ le funzioni efetch ed esearch di biopython e incrementando il parametro retstart
     ``Entrez.email = <email_registered_on_NCBI>``
     ``Entrez.api_key = "cc030996838fc52dd1a2653fad76bf5fe408"``
 
-
-
-# La rappresentazione FASTA e FASTQ
-FASTA conserva soltanto la Sequenza di nucleotidi o amminoacidi, codificando ogni gene in singole lettere
-per indice di posizione. Nella rappresentazione in Genbank, troviamo tale dato nel file JSON che salviamo
-in locale, alla voce translation per ogni Coding Sequence sotto ogni Specie, secondo la seguente gerarchia:
- 
-- SPECIE
-    - FEATURES
-        - CDS
-            - /translation="LSLAVGTTITLASYHWLL[...]""
-
-FASTQ è un "quality score" che associa alla sequenza, per ogni indice di posizione, un valore 
-qualitativo codificato in ASCII. Un esempio a seguire:
-
-- @SRR64[...]       Name Sequence
-- CCTCGTCTA[...]    DNA Sequence
-- +SRR64[...]       Quality address
-- BBBBBFFFF[...]    Quality Score
-
-
-
-# Genomic & Transcriptomic Sequencing
-E' il processo di determinazione dell'ordine dei nucleotidi (Adenina, Citosina, Guanina e Timina) che 
-costituiscono il frammento di DNA in analisi. Le tecniche principali di Squenziamento sono
-Sanger e NGS (Illumina ne é un esempio).
-
-
-
-# Sequence Alignment
-E' il processo di confronto di due o più sequenze di DNA o proteine per identificare regioni identiche
-o simili per individuare eventuali relazioni funzionali, strutturali o filogenetiche.
-Le tecniche di allineamento prevedono il confronto globale e locale.
-Un'applicazione algoritmica di allineamento locale è data da Smith Waterman.
-Un'applicazione algoritmica di allineamento globale é data da Needleman-Wunsch.
-
-
-
 # Le collections trattate: schema e specifiche
 Data e Complete collections (contenenti la maggior parte dei dati):
 
-- `nucleotide_data`       contiene tutti i dati delle microalghe che sono riscontrabili su NCBI alla voce Nucleotide;
-- `taxonomy_data`         contiene tutti i dati delle microalghe che sono riscontrabili su NCBI alla sezione Taxonomy;
-- `protein_data`          contiene tutti i dati delle microalghe che sono riscontrabili su NCBI alla sezione Protein;
+- `nucleotide_data`       contiene tutti i dati che sono riscontrabili su NCBI alla voce Nucleotide;
+- `taxonomy_data`         contiene tutti i dati che sono riscontrabili su NCBI alla sezione Taxonomy;
+- `protein_data`          contiene tutti i dati che sono riscontrabili su NCBI alla sezione Protein;
 
 Basic collections (per effettuare query ricorrenti ad alte performance):
   
 - `table_basic`           contiene i dati, allegeriti soltanto a nome e NCBI_ID, per questioni di performance quando si effettuano query di conteggio;
 - `table_complete`        contiene i dati per questioni di performance quando si effettuano query di conteggio;
-- `taxonomy_tree`         contiene i link di Lineage per singola specie, generata su base di taxonomy_data con taxTreeMaker su BioParse.py;
-- `markdown`              contiene questo Readme.md parsato in collection. Pensato per display sul Frontend.
-
-Le seguenti strutture sono reperibili e visibili per inter effettuando una <db=Name>.<collectionName>.find({}) ( o findOne({}) ) da terminale con MongoDB. Le seguenti strutture sono state ottenute con i comandi elencati per ogni collection. Gli esempi sono riferiti alla specie (ScientificName o GBSeq_organism) Chlorella vulgaris, che figura come ID tassonomico su NCBI (txid) come txid3077.
-
-
-# `nucleotide_data`
-
-View sulla struttura ottenuta con comando del tipo (i.e. per Chlorella vulgaris):
-``db.nucleotide_data.findOne({GBSeq_organism:"Chlorella vulgaris"})``
-```json
-type Nucleotide struct {
-	GBSeqAccessionVersion string `bson:"GBSeq_accession-version"`
-	GBSeqComment          string `bson:"GBSeq_comment"`
-	GBSeqCreateDate       string `bson:"GBSeq_create-date"`
-	GBSeqDefinition       string `bson:"GBSeq_definition"`
-	GBSeqDivision         string `bson:"GBSeq_division"`
-	GBSeqFeatureTable     []struct {
-		GBFeatureIntervals []struct {
-			GBIntervalAccession string `bson:"GBInterval_accession"`
-			GBIntervalFrom      string `bson:"GBInterval_from"`
-			GBIntervalTo        string `bson:"GBInterval_to"`
-		} `bson:"GBFeature_intervals"`
-		GBFeatureKey      string `bson:"GBFeature_key"`
-		GBFeatureLocation string `bson:"GBFeature_location"`
-		GBFeatureQuals    []struct {
-			GBQualifierName  string `bson:"GBQualifier_name"`
-			GBQualifierValue string `bson:"GBQualifier_value"`
-		} `bson:"GBFeature_quals"`
-		GBFeaturePartial3 string `bson:"GBFeature_partial3,omitempty"`
-		GBFeaturePartial5 string `bson:"GBFeature_partial5,omitempty"`
-	} `bson:"GBSeq_feature-table"`
-	GBSeqLength           string   `bson:"GBSeq_length"`
-	GBSeqLocus            string   `bson:"GBSeq_locus"`
-	GBSeqMoltype          string   `bson:"GBSeq_moltype"`
-	GBSeqOrganism         string   `bson:"GBSeq_organism"`
-	GBSeqOtherSeqids      []string `bson:"GBSeq_other-seqids"`
-	GBSeqPrimaryAccession string   `bson:"GBSeq_primary-accession"`
-	GBSeqReferences       []struct {
-		GBReferenceAuthors   []string `bson:"GBReference_authors"`
-		GBReferenceJournal   string   `bson:"GBReference_journal"`
-		GBReferencePosition  string   `bson:"GBReference_position"`
-		GBReferenceReference string   `bson:"GBReference_reference"`
-		GBReferenceTitle     string   `bson:"GBReference_title"`
-	} `bson:"GBSeq_references"`
-	GBSeqSource       string `bson:"GBSeq_source"`
-	GBSeqStrandedness string `bson:"GBSeq_strandedness"`
-	GBSeqTaxonomy     string `bson:"GBSeq_taxonomy"`
-	GBSeqTopology     string `bson:"GBSeq_topology"`
-	GBSeqUpdateDate   string `bson:"GBSeq_update-date"`
-}
-```
-
+- `taxonomy_tree`         contiene i link di Lineage per singola specie, generata su base di taxonomy_data con generateTaxonomyTree() del modulo BioPyParse;
 
 # `taxonomy_data`
 
 View sulla struttura ottenuta con comando del tipo (i.e. per Chlorella vulgaris):
 ``db.taxonomy_data.findOne({ScientificName:"Chlorella vulgaris"})``
-```json
+```go
 type Taxonomy struct {
 	TaxID          string `bson:"TaxId"`
 	ScientificName string `bson:"ScientificName"`
@@ -304,13 +166,65 @@ type Taxonomy struct {
 }
 ```
 
+# `nucleotide_data`
+
+View sulla struttura ottenuta con comando del tipo (i.e. per Chlorella vulgaris):
+``db.nucleotide_data.findOne({GBSeq_organism:"Chlorella vulgaris"})``
+```json
+{
+	"GBSeqAccessionVersion": "string",
+	"GBSeqComment"         : "string",
+	"GBSeqCreateDate"      : "string",
+	"GBSeqDefinition"      : "string",
+	"GBSeqDivision"        : "string",
+	"GBSeqFeatureTable"    : [
+	{
+	    "GBFeatureIntervals": {
+		"GBIntervalAccession": "string",
+		"GBIntervalFrom"     : "string",
+		"GBIntervalTo"       : "string"
+	    },
+	    "GBFeatureKey"     : "string",
+	    "GBFeatureLocation": "string",
+	    "GBFeatureQuals": [
+		{
+		    "GBQualifierName" : "string",
+		    "GBQualifierValue": "string"
+		}
+	    ],
+	    "GBFeaturePartial3": "string",
+	    "GBFeaturePartial5": "string"
+	}
+	],
+	"GBSeqLength"          : "string",
+	"GBSeqLocus"           : "string",
+	"GBSeqMoltype"         : "string",
+	"GBSeqOrganism"        : "string",
+	"GBSeqOtherSeqids"     : ["string"],
+	"GBSeqPrimaryAccession": "string",
+	"GBSeqReferences"      : [
+        {
+            "GBReferenceAuthors"  : ["string"],
+            "GBReferenceJournal"  : "string",
+            "GBReferencePosition" : "string",
+            "GBReferenceReference": "string",
+            "GBReferenceTitle"    : "string"
+        }
+    	],
+	"GBSeqSource"      : "string",
+	"GBSeqStrandedness": "string",
+	"GBSeqTaxonomy"    : "string",
+	"GBSeqTopology"    : "string",
+	"GBSeqUpdateDate"  : "string",
+}
+```
 
 # `protein_data`
 
 View sulla struttura ottenuta con comando del tipo (i.e. per Chlorella vulgaris):
 ``db.protein_data.findOne({GBSeq_organism:"Chlorella vulgaris"})``
 NB: Struttura identica a nucleotide_data
-```json
+```go
 type Protein struct {
 	GBSeqAccessionVersion string `bson:"GBSeq_accession-version"`
 	GBSeqComment          string `bson:"GBSeq_comment"`
@@ -358,7 +272,7 @@ type Protein struct {
 
 View sulla struttura ottenuta con comando del tipo (i.e. per Chlorella vulgaris):
 ``db.table_basic.findOne({ScientificName:"Chlorella vulgaris"})``
-```json
+```go
 type TableBasic struct {
 	ScientificName string `bson:"ScientificName"`
 	TaxId          string `bson:"TaxId"`
@@ -383,7 +297,7 @@ type TableBasic struct {
 
 View sulla struttura ottenuta con comando del tipo (i.e. per Chlorella vulgaris):
 ``db.table_complete.findOne({ScientificName:"Chlorella vulgaris"})``
-```json
+```go
 type TableComplete struct {
 	ScientificName string       `bson:"ScientificName"`
 	TaxId          string       `bson:"TaxId"`
@@ -399,12 +313,11 @@ type TableComplete struct {
 }
 ```
 
-
 # `taxonomy_tree`
 
 View sulla struttura ottenuta con comando del tipo (i.e. per Chlorella vulgaris):
 ``db.taxonomy_tree.findOne({TaxId:"3077"})``
-```json
+```go
 type TaxonomyTree struct {
 	TaxId          string         `bson:"TaxId"`
 	Rank           string         `bson:"Rank"`
@@ -413,24 +326,12 @@ type TaxonomyTree struct {
 }
 ```
 
-
+<!--
 EXTRA:
-
-
-# `markdown`
-View generica per parsing della Homepage [WIP]
-```json
-type Markdown struct {
-	Title    string `bson:"Title"`
-	Versione string `bson:"Versione"`
-	Text     string `bson:"Text"`
-}
-```
-
 
 # `table_basic`
 Struttura di appoggio per visualizzare i dati di table_basic e table_compete
-```json
+```go
 type OrganismTable struct {
 	ScientificName string
 	TaxId          string
@@ -450,7 +351,7 @@ type OrganismTable struct {
 }
 ```
 
-
+-->
 
 
 
