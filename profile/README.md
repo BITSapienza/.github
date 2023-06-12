@@ -18,8 +18,6 @@ Credits
 
 # Requisiti:
 
-Anaconda:             "https://www.anaconda.com"
-
 Biopython:            "https://biopython.org/wiki/Documentation"
 
 Pymongo:              "https://pymongo.readthedocs.io/en/stable/"
@@ -30,11 +28,9 @@ NPM:                  "https://docs.npmjs.com/downloading-and-installing-node-js
 
 GoLang:               "https://go.dev/doc/install"
 
-Vue.js:                "https://cli.vuejs.org/guide/installation.html"
-
 Docker:               "https://docs.docker.com/engine/install/ubuntu/"
 
-Docker compose:       "https://docs.docker.com/desktop/install/linux-install/" (Integrato in Desktop)
+Docker compose:       "https://docs.docker.com/desktop/install/linux-install/"
 
 
 # Fonti ufficiali:
@@ -45,15 +41,15 @@ NCBI:                 "https://www.ncbi.nlm.nih.gov/"    DB americano
 EBI:                  "https://www.ebi.ac.uk/"           DB europeo
 
 # Struttura del Progetto:
-L'insieme di questi 4 moduli hanno dato vita al progetto qui in opera:
+Il progetto è composto dai seguenti quattro moduli:
 
 - Database: MongoDB
-- Parser:   Bioparse.py
-- Backend:  GoServer
-- Frontend: Vue.js
+- Parser:   BioPyParse (Python)
+- Backend:  BioServer (Go)
+- Frontend: Vulgaris Platform (Vue.js)
 
 # Guida al primo utilizzo
-Per la prima installazione su un qualsiasi PC, seguire i seguenti passaggi:
+Per la prima installazione su un qualsiasi PC Linux, seguire i seguenti passaggi:
 
 [TODO] Docker image [TODO] 
 - Scaricare/clonare il progetto tramite git alla repository "https://github.com/federico-rosatelli/biologia"
@@ -139,30 +135,32 @@ Basic collections (per effettuare query ricorrenti ad alte performance):
 
 View sulla struttura ottenuta con comando del tipo (i.e. per Chlorella vulgaris):
 ``db.taxonomy_data.findOne({ScientificName:"Chlorella vulgaris"})``
-```go
-type Taxonomy struct {
-	TaxID          string `bson:"TaxId"`
-	ScientificName string `bson:"ScientificName"`
-	ParentTaxID    string `bson:"ParentTaxId"`
-	Rank           string `bson:"Rank"`
-	Division       string `bson:"Division"`
-	GeneticCode    struct {
-		GCID   string `bson:"GCId"`
-		GCName string `bson:"GCName"`
-	} `bson:"GeneticCode"`
-	MitoGeneticCode struct {
-		MGCID   string `bson:"MGCId"`
-		MGCName string `bson:"MGCName"`
-	} `bson:"MitoGeneticCode"`
-	Lineage   string `bson:"Lineage"`
-	LineageEx []struct {
-		TaxID          string `bson:"TaxId"`
-		ScientificName string `bson:"ScientificName"`
-		Rank           string `bson:"Rank"`
-	} `bson:"LineageEx"`
-	CreateDate string `bson:"CreateDate"`
-	UpdateDate string `bson:"UpdateDate"`
-	PubDate    string `bson:"PubDate"`
+```json
+{
+	"TaxID"			: "string",
+	"ScientificName"	: "string",
+	"ParentTaxID"		: "string",
+	"Rank"			: "string",
+	"Divisio"		: "string",
+	"GeneticCode":{
+		"GCID"		: "string",
+		"GCName"	: "string"
+	},
+	"MitoGeneticCode":{
+		"MGCID"		: "string",
+		"MGCName"	: "string"
+	},
+	"Lineage"	: "string",
+	"LineageEx": [
+		{
+			"TaxID"			: "string",
+			"ScientificName"	: "string",
+			"Rank"			: "string",
+		},
+	]
+	"CreateDate"	: "string",
+	"UpdateDate"	: "string",
+	"PubDate"	: "string"
 }
 ```
 
@@ -178,23 +176,23 @@ View sulla struttura ottenuta con comando del tipo (i.e. per Chlorella vulgaris)
 	"GBSeqDefinition"      : "string",
 	"GBSeqDivision"        : "string",
 	"GBSeqFeatureTable"    : [
-	{
-	    "GBFeatureIntervals": {
-		"GBIntervalAccession": "string",
-		"GBIntervalFrom"     : "string",
-		"GBIntervalTo"       : "string"
-	    },
-	    "GBFeatureKey"     : "string",
-	    "GBFeatureLocation": "string",
-	    "GBFeatureQuals": [
 		{
-		    "GBQualifierName" : "string",
-		    "GBQualifierValue": "string"
+		    "GBFeatureIntervals": {
+			"GBIntervalAccession": "string",
+			"GBIntervalFrom"     : "string",
+			"GBIntervalTo"       : "string"
+		    },
+		    "GBFeatureKey"     : "string",
+		    "GBFeatureLocation": "string",
+		    "GBFeatureQuals": [
+			{
+			    "GBQualifierName" : "string",
+			    "GBQualifierValue": "string"
+			}
+		    ],
+		    "GBFeaturePartial3": "string",
+		    "GBFeaturePartial5": "string"
 		}
-	    ],
-	    "GBFeaturePartial3": "string",
-	    "GBFeaturePartial5": "string"
-	}
 	],
 	"GBSeqLength"          : "string",
 	"GBSeqLocus"           : "string",
@@ -203,19 +201,19 @@ View sulla struttura ottenuta con comando del tipo (i.e. per Chlorella vulgaris)
 	"GBSeqOtherSeqids"     : ["string"],
 	"GBSeqPrimaryAccession": "string",
 	"GBSeqReferences"      : [
-        {
-            "GBReferenceAuthors"  : ["string"],
-            "GBReferenceJournal"  : "string",
-            "GBReferencePosition" : "string",
-            "GBReferenceReference": "string",
-            "GBReferenceTitle"    : "string"
-        }
+		{
+		    "GBReferenceAuthors"  : ["string"],
+		    "GBReferenceJournal"  : "string",
+		    "GBReferencePosition" : "string",
+		    "GBReferenceReference": "string",
+		    "GBReferenceTitle"    : "string"
+		}
     	],
 	"GBSeqSource"      : "string",
 	"GBSeqStrandedness": "string",
 	"GBSeqTaxonomy"    : "string",
 	"GBSeqTopology"    : "string",
-	"GBSeqUpdateDate"  : "string",
+	"GBSeqUpdateDate"  : "string"
 }
 ```
 
@@ -223,72 +221,86 @@ View sulla struttura ottenuta con comando del tipo (i.e. per Chlorella vulgaris)
 
 View sulla struttura ottenuta con comando del tipo (i.e. per Chlorella vulgaris):
 ``db.protein_data.findOne({GBSeq_organism:"Chlorella vulgaris"})``
-NB: Struttura identica a nucleotide_data
-```go
-type Protein struct {
-	GBSeqAccessionVersion string `bson:"GBSeq_accession-version"`
-	GBSeqComment          string `bson:"GBSeq_comment"`
-	GBSeqCreateDate       string `bson:"GBSeq_create-date"`
-	GBSeqDefinition       string `bson:"GBSeq_definition"`
-	GBSeqDivision         string `bson:"GBSeq_division"`
-	GBSeqFeatureTable     []struct {
-		GBFeatureIntervals []struct {
-			GBIntervalAccession string `bson:"GBInterval_accession"`
-			GBIntervalFrom      string `bson:"GBInterval_from"`
-			GBIntervalTo        string `bson:"GBInterval_to"`
-		} `bson:"GBFeature_intervals"`
-		GBFeatureKey      string `bson:"GBFeature_key"`
-		GBFeatureLocation string `bson:"GBFeature_location"`
-		GBFeatureQuals    []struct {
-			GBQualifierName  string `bson:"GBQualifier_name"`
-			GBQualifierValue string `bson:"GBQualifier_value"`
-		} `bson:"GBFeature_quals"`
-		GBFeaturePartial3 string `bson:"GBFeature_partial3,omitempty"`
-		GBFeaturePartial5 string `bson:"GBFeature_partial5,omitempty"`
-	} `bson:"GBSeq_feature-table"`
-	GBSeqLength           string   `bson:"GBSeq_length"`
-	GBSeqLocus            string   `bson:"GBSeq_locus"`
-	GBSeqMoltype          string   `bson:"GBSeq_moltype"`
-	GBSeqOrganism         string   `bson:"GBSeq_organism"`
-	GBSeqOtherSeqids      []string `bson:"GBSeq_other-seqids"`
-	GBSeqPrimaryAccession string   `bson:"GBSeq_primary-accession"`
-	GBSeqReferences       []struct {
-		GBReferenceAuthors   []string `bson:"GBReference_authors"`
-		GBReferenceJournal   string   `bson:"GBReference_journal"`
-		GBReferencePosition  string   `bson:"GBReference_position"`
-		GBReferenceReference string   `bson:"GBReference_reference"`
-		GBReferenceTitle     string   `bson:"GBReference_title"`
-	} `bson:"GBSeq_references"`
-	GBSeqSource       string `bson:"GBSeq_source"`
-	GBSeqStrandedness string `bson:"GBSeq_strandedness"`
-	GBSeqTaxonomy     string `bson:"GBSeq_taxonomy"`
-	GBSeqTopology     string `bson:"GBSeq_topology"`
-	GBSeqUpdateDate   string `bson:"GBSeq_update-date"`
+```json
+{
+	"GBSeqAccessionVersion"	: "string",
+	"GBSeqComment"		: "string",
+	"GBSeqCreateDate"	: "string",
+	"GBSeqDefinition"	: "string",
+	"GBSeqDivision"		: "string",
+	"GBSeqFeatureTable"	: [
+		{
+			"GBFeatureIntervals": {
+				"GBIntervalAccession"	: "string",
+				"GBIntervalFrom"      	: "string",
+				"GBIntervalTo"		: "string"
+			},
+			"GBFeatureKey"		: "string",
+			"GBFeatureLocation"	: "string",
+			"GBFeatureQuals"	: [
+			{
+				"GBQualifierName"	: "string",
+				"GBQualifierValue"	: "string"
+			}
+			],
+			"GBFeaturePartial3"	: "string",
+			"GBFeaturePartial5"	: "string"
+		}
+	],
+	"GBSeqLength"		: "string",
+	"GBSeqLocus"            : "string",
+	"GBSeqMoltype"		: "string",
+	"GBSeqOrganism"        	: "string",
+	"GBSeqOtherSeqids"	: "string",
+	"GBSeqPrimaryAccession" : "string",
+	"GBSeqReferences"	: [
+		{
+			"GBReferenceAuthors"	: ["string"],
+			"GBReferenceJournal"	: "string",
+			"GBReferencePosition"	: "string",
+			"GBReferenceReference"	: "string",
+			"GBReferenceTitle"	: "string"
+		}
+	],
+	"GBSeqSource"		: "string",
+	"GBSeqStrandedness"	: "string",
+	"GBSeqTaxonomy"		: "string",
+	"GBSeqTopology"		: "string",
+	"GBSeqUpdateDate"	: "string"
 }
 ```
 
+NB: Struttura identica a nucleotide_data
 
 # `table_basic`
 
 View sulla struttura ottenuta con comando del tipo (i.e. per Chlorella vulgaris):
 ``db.table_basic.findOne({ScientificName:"Chlorella vulgaris"})``
-```go
-type TableBasic struct {
-	ScientificName string `bson:"ScientificName"`
-	TaxId          string `bson:"TaxId"`
-	Nucleotides    []struct {
-		GBSeq_locus string `bson:"GBSeq_locus"`
-	} `bson:"Nucleotides"`
-	Proteins []struct {
-		GBSeq_locus string `bson:"GBSeq_locus"`
-	} `bson:"Proteins"`
-	Products []struct {
-		ProductName string `bson:"ProductName"`
-		QtyProduct  string `bson:"QtyProduct"`
-	} `bson:"Products"`
-	Country []struct {
-		CountryName string `bson:"CountryName"`
-	} `bson:"Country"`
+```json
+{
+	"ScientificName"	: "string",
+	"TaxId"			: "string",
+	"Nucleotides":		[
+		{
+			"GBSeq_locus"	: "string"
+		}
+	],
+	"Proteins"	: [
+		{
+			"GBSeq_locus" : "string"
+		}
+	],
+	"Products"	: [
+		{
+			"ProductName"	: "string",
+			"QtyProduct"	: "string"
+		}
+	],
+	"Country"	: [
+		{
+			"CountryName" : "string"
+		}
+	]
 }
 ```
 
@@ -297,191 +309,51 @@ type TableBasic struct {
 
 View sulla struttura ottenuta con comando del tipo (i.e. per Chlorella vulgaris):
 ``db.table_complete.findOne({ScientificName:"Chlorella vulgaris"})``
-```go
-type TableComplete struct {
-	ScientificName string       `bson:"ScientificName"`
-	TaxId          string       `bson:"TaxId"`
-	Nucleotides    []Nucleotide `bson:"Nucleotides"`
-	Proteins       []Protein    `bson:"Proteins"`
-	Products       []struct {
-		ProductName string `bson:"ProductName"`
-		QtyProduct  string `bson:"QtyProduct"`
-	} `bson:"Products"`
-	Country []struct {
-		CountryName string `bson:"CountryName"`
-	} `bson:"Country"`
+```json
+{
+	"ScientificName"	: "string",
+	"TaxId"			: "string",
+	"Nucleotides"		: [
+		{
+			"SameAs"	: "nucleotide_data"
+		}
+	],
+	"Proteins"	: [
+		{
+			"SameAs"	: "protein_data"
+		}
+	],
+	"Products"	: [
+		{
+			"ProductName"	: "string",
+			"QtyProduct"	: "string"
+		}
+	],
+	"Country"	: [
+		{
+			"CountryName"	: "string"
+		}
+	]
 }
 ```
+
+Nota: Nucleotides e Proteins contengono una struttura uguale rispettivamente a nucleotide_data e protein_data.
 
 # `taxonomy_tree`
 
 View sulla struttura ottenuta con comando del tipo (i.e. per Chlorella vulgaris):
 ``db.taxonomy_tree.findOne({TaxId:"3077"})``
-```go
-type TaxonomyTree struct {
-	TaxId          string         `bson:"TaxId"`
-	Rank           string         `bson:"Rank"`
-	ScientificName string         `bson:"ScientificName"`
-	SubClasses     []TaxonomyTree `bson:"SubClasses"`
+```json
+{
+	"TaxId"			: "string",
+	"Rank"			: "string",
+	"ScientificName"	: "string",
+	"SubClasses"		: [
+		{
+			"TaxId"			: "string",
+			"Rank"			: "string",
+			"ScientificName"	: "string"
+		}
+	]
 }
 ```
-
-<!--
-EXTRA:
-
-# `table_basic`
-Struttura di appoggio per visualizzare i dati di table_basic e table_compete
-```go
-type OrganismTable struct {
-	ScientificName string
-	TaxId          string
-	QtyNucleotides int
-	QtyProteins    int
-	QtyProducts    int
-	Genomes        []struct {
-		Link string
-		GBFF bool
-		FNA  bool
-		GFF  bool
-	}
-	Annotations  []string
-	Trascriptome []string
-	SraWgs       int
-	SraTran      int
-}
-```
-
--->
-
-
-
-<!-- 
-Json Files saved:
-
-`dataStruct.json`:
-```json
-    {
-        "struct":[
-            "Name": "LOCUS",
-            "Id": "VERSION",
-            "Seq_Hex": "SHA256HEX",
-            "Description": "DEFINITION",
-            "Features": [
-                {
-                    "Type": "typeFeatures",
-                    "Others": "others info of the feature",
-                    "Location": [
-                        0,
-                        0
-                    ]
-                }
-            ]
-        ],
-        "hex":[
-            {
-                "Seq_Hex":"SHA256HEX",
-                "Seq_Raw":"ORIGIN"
-            }
-        ]
-    }
-    //example
-    {
-        "struct":[
-            {
-            "Name": "OQ443078",
-            "Id": "OQ443078.1",
-            "Seq_Hex": "de5f363dd78bc0f2a534c55783739a672ce136c67b34767a052d8ecd7e4deb5b",
-            "Description": "Bacillus velezensis strain 3(JS) 16S ribosomal RNA gene, partial sequence",
-            "Features": [
-                {
-                    "Type": "source",
-                    "organism": "Bacillus velezensis",
-                    "mol_type": "genomic DNA",
-                    "strain": "3(JS)",
-                    "db_xref": "taxon:492670",
-                    "country": "India: Vikramgad",
-                    "lat_lon": "19.80 N 73.09 E",
-                    "collected_by": "Vir Acharya",
-                    "identified_by": "Raunak Giri",
-                    "Location": [
-                        0,
-                        936
-                    ]
-                },
-                {
-                    "Type": "rRNA",
-                    "product": "16S ribosomal RNA",
-                    "Location": [
-                        0,
-                        936
-                    ]
-                }
-            ]
-        }
-        ],
-        "hex":[
-            {
-                "Seq_Hex":"de5f363dd78bc0f2a534c55783739a672ce136c67b34767a052d8ecd7e4deb5b",
-                "Seq_Raw":"ACCTGCCTGTAAGACTGGGATAACTCCGGGAAACCGGGGCTAATACCGGATGGTTGTCTGAACCGCATGGTTCAGACATAAAAGGTGGCTTCGGCTACCACTTACAGATGGACCCGCGGCGCATTAGCTAGTTGGTGAGGTAACGGCTCACCAAGGCGACGATGCGTAGCCGACCTGAGAGGGTGATCGGCCACACTGGGACTGAGACACGGCCCAGACTCCTACGGGAGGCAGCAGTAGGGAATCTTCCGCAATGGACGAAAGTCTGACGGAGCAACGCCGCGTGAGTGATGAAGGTTTTCGGATCGTAAAGCTCTGTTGTTAGGGAAGAACAAGTGCCGTTCAAATAGGGCGGCACCTTGACGGTACCTAACCAGAAAGCCACGGCTAACTACGTGCCAGCAGCCGCGGTAATACGTAGGTGGCAAGCGTTGTCCGGAATTATTGGGCGTAAAGGGCTCGCAGGCGGTTTCTTAAGTCTGATGTGAAAGCCCCCGGCTCAACCGGGGAGGGTCATTGGAAACTGGGGAACTTGAGTGCAGAAGAGGAGAGTGGAATTCCACGTGTAGCGGTGAAATGCGTAGAGATGTGGAGGAACACCAGTGGCGAAGGCGACTCTCTGGTCTGTAACTGACGCTGAGGAGCGAAAGCGTGGGGAGCGAACAGGATTAGATACCCTGGTAGTCCACGCCGTAAACGATGAGTGCTAAGTGTTAGGGGGTTTCCGCCCCTTAGTGCTGCAGCTAACGCATTAAGCACTCCGCCTGGGGAGTACGGTCGCAAGACTGAAACTCAAAGGAATTGACGGGGGCCCGCACAAGCGGTGGAGCATGTGGTTTAATTCGAAGCAACGCGAAGAACCTTACCAGGTCTTGACATCCTCTGACAATCCTAGAGATAGGACGTCCCCTTCGGGGGCAGAGTGACAGGTGGTGC"
-            }
-        ]
-    }
-```
-
-`dataSource.json`
-```json
-    {
-        "OrganismName":[
-            "VERSION"
-        ]
-    }
-    //example
-    {
-        "Danio rerio": [
-            "NM_001327985.1",
-            "NM_212741.1",
-            "NM_001128675.2",
-            "NM_001081554.1",
-            "NM_199618.1",
-            "NM_001303262.1",
-            "NM_001137555.3",
-            "NM_001020798.1"
-        ]
-    }
-```
-
-`algaeSource.json`
-```json
-    {
-        "OrganismName":[
-            "VERSION"
-        ]
-    }
-    //example
-    {
-        "Bracteacoccus aggregatus": [
-            "MZ090013.1",
-            "MZ067570.1",
-            "MH205944.1",
-            "MH703758.1",
-            "MH703740.1"
-        ]
-    }
-```
-
-`microAlgaeSource.json`
-```json
-    {
-        "OrganismName":[
-            "VERSION"
-        ]
-    }
-    //example
-    {
-        "Ankistrodesmus fusiformis": [
-            "OM683277.1",
-            "OM683275.1"
-        ]
-    }
-``` -->
-
