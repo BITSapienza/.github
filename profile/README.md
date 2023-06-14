@@ -26,11 +26,11 @@ This is a platform of microalgae with cross-referencing functionality, linking d
 
 ## Solved Issues
 Consulting data is now possible in an easier way: you can search for a species, what genes are related to it, what Bioprojects and Experiments have been carried out. It provides references to raw data that can be passed through some major analysis tools. The output from one of this program is intended to be passed to another one, here are listed what it has been used for our end, in this exact order of execution:
-[Busco](https://busco.ezlab.org/) for checking genomes quality;
-[trimmomatic](http://www.usadellab.org/cms/?page=trimmomatic) for trimming of genomic data and pair-end division in strands 1 and 2;
-[hisat2](https://ccb.jhu.edu/software/hisat/index.shtml) for creation, from fasta 1 and 2, a sam file that contains treated data;
-[Samtools sort](https://www.htslib.org/) for organizing data contained in sam files and transform them in .bam format; 
-[Stringtie](https://ccb.jhu.edu/software/stringtie/) that creates .gtf files from .srr, thanks to the notation and to the .bam file bam obtained before.
+- [Busco](https://busco.ezlab.org/) for checking genomes quality;
+- [trimmomatic](http://www.usadellab.org/cms/?page=trimmomatic) for trimming of genomic data and pair-end division in strands 1 and 2;
+- [hisat2](https://ccb.jhu.edu/software/hisat/index.shtml) for creation, from fasta 1 and 2, a sam file that contains treated data;
+- [Samtools sort](https://www.htslib.org/) for organizing data contained in sam files and transform them in .bam format; 
+- [Stringtie](https://ccb.jhu.edu/software/stringtie/) that creates .gtf files from .srr, thanks to the notation and to the .bam file bam obtained before.
 If data are available after these steps, our platform can also show them.
 
 ## Development choices
