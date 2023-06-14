@@ -1,12 +1,6 @@
 # MicroAlgae DB
 
-## Requirements:
-!["https://docs.docker.com/engine/install/ubuntu/"](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
-
-Docker:               "https://docs.docker.com/engine/install/ubuntu/"
-
-Docker compose:       "https://docs.docker.com/desktop/install/linux-install/"
-
+[![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)](https://docs.docker.com/engine/install/ubuntu/)
 
 ## Credits
 [`federico-rosatelli`](https://github.com/federico-rosatelli) [`Mat`](https://github.com/AxnNxs) [`Loriv3`](https://github.com/Loriv3) [`Samsey`](https://github.com/Samseys) [`Calli`](https://github.com/BboyCaligola)
@@ -17,15 +11,20 @@ NCBI:                 "https://www.ncbi.nlm.nih.gov/"
 
 EBI:                  "https://www.ebi.ac.uk/"
 
-## Project structure:
+# Project structure:
 The project consists of the following four modules:
 
 - Database: MongoDB
-- Parser:   BioPyParse (Python)
-- Backend:  BioServer (Go)
-- Frontend: Vulgaris Platform (Vue.js)
+- Parser:   [BioPyParse](https://github.com/BITSapienza/biopyparse) (Python)
+- Backend:  [BioServer](https://github.com/BITSapienza/Bio-Server) (GoLang)
+- Frontend: [Vulgaris Platform](https://github.com/BITSapienza/Vulgaris-Platform) (Vue.js)
 
-## First use guide
+
+# First use guide
+
+## Requirements
+
+- Docker
 
 TODO:
 - goals
