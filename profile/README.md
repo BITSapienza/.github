@@ -3,12 +3,16 @@
 [![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)](https://docs.docker.com/engine/install/ubuntu/)
 
 ## Credits
-[`federico-rosatelli`](https://github.com/federico-rosatelli) [`Mat`](https://github.com/AxnNxs) [`Loriv3`](https://github.com/Loriv3) [`Samsey`](https://github.com/Samseys) [`Calli`](https://github.com/BboyCaligola)
+[`federico-rosatelli`](https://github.com/federico-rosatelli)
+[`Mat`](https://github.com/AxnNxs)
+[`Loriv3`](https://github.com/Loriv3)
+[`Samsey`](https://github.com/Samseys)
+[`Calli`](https://github.com/BboyCaligola)
 
 ## Sources:
 
-- NCBI:                 "https://www.ncbi.nlm.nih.gov/"
-- EBI:                  "https://www.ebi.ac.uk/"
+- [NCBI](https://www.ncbi.nlm.nih.gov/)
+- [EBI](https://www.ebi.ac.uk/)
 
 # Project structure:
 The project consists of the following four modules:
@@ -19,43 +23,42 @@ The project consists of the following four modules:
 - Frontend: [Vulgaris Platform](https://github.com/BITSapienza/Vulgaris-Platform) (Vue.js)
 
 # Main goals
-TODO:
+
 - goals
 - issues resolved
 - development choices
 
 # Installation
-
-## Requirements
-
-- Docker
-
-## Guide
 - Install [Mongotools](https://www.mongodb.com/try/download/database-tools)
 	- Mongotools is needed only to manage DB data. It provides functions like mongorestore to retrive data from a local backup.
 		```properties
 		mongorestore --db=<DB-Name> <backup_path>
 		```
 - Install [Docker](https://docs.docker.com/engine/install/)
-- Run this commands:
+- Make a new folder, move to that directory and run these commands:
 	```properties
 	wget https://raw.githubusercontent.com/BITSapienza/.github/main/docker-compose.yml
 	```
 	```bash 
 	git clone https://github.com/BITSapienza/Bio-Server
 	```
-	```properties
+	```bash
 	git clone https://github.com/BITSapienza/Vulgaris-Platform
 	```
-- run docker-compose after download Frontend and Backend in the same directory (bash?)
+- Finally, run:
+	```shell
+	docker compose up -d
+	```
+- Optionally, restore a DB backup using the mongorestore command.
 
-## Collections
+
+# Collections
 Base collections:
 
-- `nucleotide_data`		contains the data obtainable by searching in the Nucleotide NCBI database.
-- `taxonomy_data`		contains the data obtainable by searching in the Taxonomy NCBI database.
-- `protein_data`		contains the data obtainable by searching in the Nucleotide Protein database.
-- `sra`				contains the data obtainable by searching in the SRA NCBI database.
+- `nucleotide_data`			contains the data obtainable by searching in the Nucleotide NCBI database.
+- `taxonomy_data`			contains the data obtainable by searching in the Taxonomy NCBI database.
+- `protein_data`			contains the data obtainable by searching in the Nucleotide Protein database.
+- `sra`						contains the data obtainable by searching in the SRA NCBI database.
 
 Collections made for performance reason:
   
