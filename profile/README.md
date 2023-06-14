@@ -38,12 +38,14 @@ TODO:
 		```
 - Install [Docker](https://docs.docker.com/engine/install/)
 - Run this commands:
-	```shell
+	```properties
 	wget https://raw.githubusercontent.com/BITSapienza/.github/main/docker-compose.yml
 	```
-	```properties 
-	git clone
-	git clone
+	```bash 
+	git clone https://github.com/BITSapienza/Bio-Server
+	```
+	```properties
+	git clone https://github.com/BITSapienza/Vulgaris-Platform
 	```
 - run docker-compose after download Frontend and Backend in the same directory (bash?)
 
