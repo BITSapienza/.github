@@ -50,9 +50,6 @@ We offer two modalities of use:
 # Installation
 - Install [Mongotools](https://www.mongodb.com/try/download/database-tools)
 	- Mongotools is needed only to manage DB data. It provides functions like mongorestore to retrive data from a local backup.
-		```properties
-		mongorestore --db=<DB-Name> <backup_path>
-		```
 - Install [Docker](https://docs.docker.com/engine/install/) following docker-engine or docker-server guide
 - Make a new folder, move to that directory and run these commands:
 	```properties
@@ -68,4 +65,7 @@ We offer two modalities of use:
 	```shell
 	docker compose up -d
 	```
-- Optionally, restore a DB backup using the mongorestore command.
+- Optionally, restore a DB backup using the mongorestore command:
+	```properties
+	mongorestore --db=<DB-Name> <backup_path>
+	```
