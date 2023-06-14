@@ -1,5 +1,4 @@
 # MicroAlgae DB
-
 [![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)](https://docs.docker.com/engine/install/ubuntu/)
 
 ## Credits
@@ -10,7 +9,6 @@
 [`Calli`](https://github.com/BboyCaligola)
 
 ## Sources:
-
 - [NCBI](https://www.ncbi.nlm.nih.gov/)
 - [EBI](https://www.ebi.ac.uk/)
 
@@ -23,10 +21,21 @@ The project consists of the following four modules:
 - Frontend: [Vulgaris Platform](https://github.com/BITSapienza/Vulgaris-Platform) (Vue.js)
 
 # Main goals
+## Description
+This is a platform of microalgae with cross-referencing functionality, linking data from the most important biologic databases. It a database for consulting taxonomic, nucleotide and protein data on over 900+ species of microalgae. 
+- with coal capture properties;
 
-- goals
-- issues resolved
-- development choices
+## Solved Issues
+Consulting data is now possible in an easier way: you can search for a species and what genes are related to it, what Bioprojects and Experiments have been carried out, and it provides references to raw data that can be passed through the major analysis tools, such as [Busco](https://busco.ezlab.org/), [Samtools](https://www.htslib.org/), [test](), [test](), [test](), [test](), [test](). If resulting data are already available, it can also show them.
+
+## Development choices
+For modularity and portability purpoposes we created two dockerized modules, one for the Frontend and one for the Backend, and another module for retrieving data from NCBI databases. The database engine we chose to use is MongoDB, due to its no-SQL design. That makes it adequate to store and manage eterogeneous data with decent performance.
+
+We chose to use Python for the Biopyparse module because there are useful libraries like biopython to fetch data. 
+
+We chose to use GoLang for the Backend because it allowed us to develop the API in an easier way than other languages, with its great handling of JSON structures.
+
+We chose to use Vue for the Frontend because it is a modern, standard Framework and we had previous experience using it.
 
 # Installation
 - Install [Mongotools](https://www.mongodb.com/try/download/database-tools)
