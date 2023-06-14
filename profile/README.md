@@ -7,9 +7,8 @@
 
 ## Sources:
 
-NCBI:                 "https://www.ncbi.nlm.nih.gov/"
-
-EBI:                  "https://www.ebi.ac.uk/"
+- NCBI:                 "https://www.ncbi.nlm.nih.gov/"
+- EBI:                  "https://www.ebi.ac.uk/"
 
 # Project structure:
 The project consists of the following four modules:
@@ -19,21 +18,33 @@ The project consists of the following four modules:
 - Backend:  [BioServer](https://github.com/BITSapienza/Bio-Server) (GoLang)
 - Frontend: [Vulgaris Platform](https://github.com/BITSapienza/Vulgaris-Platform) (Vue.js)
 
-
-# First use guide
-
-## Requirements
-
-- Docker
-
+# Main goals
 TODO:
 - goals
 - issues resolved
 - development choices
 
-TODO
-- install mongotools
-- install docker engine
+# Installation
+
+## Requirements
+
+- Docker
+
+## Guide
+- Install [Mongotools](https://www.mongodb.com/try/download/database-tools)
+	- Mongotools is needed only to manage DB data. It provides functions like mongorestore to retrive data from a local backup.
+		```properties
+		mongorestore --db=<DB-Name> <backup_path>
+		```
+- Install [Docker](https://docs.docker.com/engine/install/)
+- Run this commands:
+	```shell
+	wget https://raw.githubusercontent.com/BITSapienza/.github/main/docker-compose.yml
+	```
+	```properties 
+	git clone
+	git clone
+	```
 - run docker-compose after download Frontend and Backend in the same directory (bash?)
 
 ## Collections
