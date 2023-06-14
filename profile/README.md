@@ -31,6 +31,7 @@ Consulting data is now possible in an easier way: you can search for a species, 
 - [hisat2](https://ccb.jhu.edu/software/hisat/index.shtml) for creation, from fasta 1 and 2, a sam file that contains treated data;
 - [Samtools sort](https://www.htslib.org/) for organizing data contained in sam files and transform them in .bam format; 
 - [Stringtie](https://ccb.jhu.edu/software/stringtie/) that creates .gtf files from .srr, thanks to the notation and to the .bam file bam obtained before.
+
 If data are available after these steps, our platform can also show them.
 
 ## Development choices
