@@ -44,8 +44,8 @@ We chose to use Vue for the Frontend because it is a modern, standard Framework 
 
 # How to run the project
 We offer two modalities of use:
-1 - Follow the Installation paragraph showed below. Only Backend and Frontend need to be downloaded if you want to restore a backup database with MongoDB.
-2 - Run the modules stand-alone. The commands that are needed to run to use the software without docker are listed in the omonimous sub-repositories, in relative README.md. 
+- Follow the Installation paragraph showed below. Only Backend and Frontend need to be downloaded if you want to restore a backup database with MongoDB.
+- Run the modules stand-alone. The commands that are needed to run to use the software without docker are listed in the omonimous sub-repositories, in relative README.md. 
 
 # Installation
 - Install [Mongotools](https://www.mongodb.com/try/download/database-tools)
