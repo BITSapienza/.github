@@ -25,7 +25,13 @@ The project consists of the following four modules:
 This is a platform of microalgae with cross-referencing functionality, linking data from the most important biologic databases. It's meant for consulting taxonomic, nucleotide and protein data on over 900+ species of microalgae. One of the major focus of the project was to identify the species with carbon capture properties in order to reduce CO2 level in atmosphere.
 
 ## Solved Issues
-Consulting data is now possible in an easier way: you can search for a species, what genes are related to it, what Bioprojects and Experiments have been carried out. It provides references to raw data that can be passed through the major analysis tools, such as [Busco](https://busco.ezlab.org/) and [Samtools](https://www.htslib.org/). If resulting data are already available, it can also show them.
+Consulting data is now possible in an easier way: you can search for a species, what genes are related to it, what Bioprojects and Experiments have been carried out. It provides references to raw data that can be passed through some major analysis tools. The output from one of this program is intended to be passed to another one, here are listed what it has been used for our end, in this exact order of execution:
+[Busco](https://busco.ezlab.org/) for checking genomes quality;
+[trimmomatic](http://www.usadellab.org/cms/?page=trimmomatic) for trimming of genomic data and pair-end division in strands 1 and 2;
+[hisat2](https://ccb.jhu.edu/software/hisat/index.shtml) for creation, from fasta 1 and 2, a sam file that contains treated data;
+[Samtools sort](https://www.htslib.org/) for organizing data contained in sam files and transform them in .bam format; 
+[Stringtie](https://ccb.jhu.edu/software/stringtie/) that creates .gtf files from .srr, thanks to the notation and to the .bam file bam obtained before.
+If data are available after these steps, our platform can also show them.
 
 ## Development choices
 For modularity and portability purpoposes we created two dockerized modules, one for the Frontend and one for the Backend, and another module for retrieving data from NCBI databases. We chose to use a no-SQL database due to its properties to store and manage eterogeneous data. So we preferred MongoDB for its reliability and documentation. 
@@ -35,6 +41,11 @@ We chose to use Python for the Biopyparse module because there are useful librar
 We chose to use GoLang for the Backend because it allowed us to develop the API in an easier way than other languages, with its great handling of JSON structures.
 
 We chose to use Vue for the Frontend because it is a modern, standard Framework and we had previous experience using it.
+
+# How to run the project
+We offer two modalities of use:
+1 - Follow the Installation paragraph showed below. Only Backend and Frontend need to be downloaded if you want to restore a backup database with MongoDB.
+2 - Run the modules stand-alone. The commands that are needed to run to use the software without docker are listed in the omonimous sub-repositories, in relative README.md. 
 
 # Installation
 - Install [Mongotools](https://www.mongodb.com/try/download/database-tools)
