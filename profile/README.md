@@ -25,7 +25,7 @@ The project consists of the following four modules:
 This is a platform of microalgae with cross-referencing functionality, linking data from the most important biologic databases. It's meant for consulting taxonomic, nucleotide and protein data on over 900+ species of microalgae. One of the major focus of the project was to identify the species with carbon capture properties in order to reduce CO2 level in atmosphere.
 
 ## Solved Issues
-Consulting data is now possible in an easier way: you can search for a species, what genes are related to it, what Bioprojects and Experiments have been carried out. It provides references to raw data that can be passed through the major analysis tools, such as [Busco](https://busco.ezlab.org/), [Samtools](https://www.htslib.org/), [test](), [test](), [test](), [test](), [test](). If resulting data are already available, it can also show them.
+Consulting data is now possible in an easier way: you can search for a species, what genes are related to it, what Bioprojects and Experiments have been carried out. It provides references to raw data that can be passed through the major analysis tools, such as [Busco](https://busco.ezlab.org/) and [Samtools](https://www.htslib.org/). If resulting data are already available, it can also show them.
 
 ## Development choices
 For modularity and portability purpoposes we created two dockerized modules, one for the Frontend and one for the Backend, and another module for retrieving data from NCBI databases. We chose to use a no-SQL database due to its properties to store and manage eterogeneous data. So we preferred MongoDB for its reliability and documentation. 
