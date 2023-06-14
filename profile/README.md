@@ -1,14 +1,15 @@
 # MicroAlgae DB
 
-Credits
-[`federico-rosatelli`](https://github.com/federico-rosatelli) [`Mat`](https://github.com/AxnNxs) [`Loriv3`](https://github.com/Loriv3) [`Samsey`](https://github.com/Samseys) [`Calli`](https://github.com/BboyCaligola)
-
 ## Requirements:
+!["https://docs.docker.com/engine/install/ubuntu/"](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
 
 Docker:               "https://docs.docker.com/engine/install/ubuntu/"
 
 Docker compose:       "https://docs.docker.com/desktop/install/linux-install/"
 
+
+## Credits
+[`federico-rosatelli`](https://github.com/federico-rosatelli) [`Mat`](https://github.com/AxnNxs) [`Loriv3`](https://github.com/Loriv3) [`Samsey`](https://github.com/Samseys) [`Calli`](https://github.com/BboyCaligola)
 
 ## Sources:
 
