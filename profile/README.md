@@ -42,7 +42,7 @@ We chose to use Vue for the Frontend because it is a modern, standard Framework 
 		```properties
 		mongorestore --db=<DB-Name> <backup_path>
 		```
-- Install [Docker](https://docs.docker.com/engine/install/)
+- Install [Docker](https://docs.docker.com/engine/install/) following docker-engine or docker-server guide
 - Make a new folder, move to that directory and run these commands:
 	```properties
 	wget https://raw.githubusercontent.com/BITSapienza/.github/main/docker-compose.yml
